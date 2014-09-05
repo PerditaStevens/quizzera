@@ -1,0 +1,17 @@
+
+<div>
+    <h1>Users</h1>
+
+    <div my-pagination="users"></div>
+    <!--<div search="User" limit="12" search-results="users" search-term="searchTerm"></div>-->
+
+    <div search search-text="userSearch.text" on-search="userSearch.handle"></div>
+
+    <div class="" ng-repeat="user in users">
+        <div user-info-tile="user" highlight-text=""></div>
+    </div>
+
+    <div class="clearfix"></div>
+    <div my-pagination="users"></div>
+
+</div>

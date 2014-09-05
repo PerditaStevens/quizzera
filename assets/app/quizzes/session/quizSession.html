@@ -1,0 +1,66 @@
+
+<div class="quiz-session">
+
+<div quiz-summary></div>
+
+
+<div class="quiz-session-progress centered-content">
+
+    <h4>Progress:<h4>
+    <progressbar class="progress-striped" type="success" value="percentCompleted"><span style="color:black; white-space:nowrap;">{{percentCompleted}}%</span></progressbar>
+
+
+    <hr>
+
+    <h4 class="">
+        <span class="glyphicon glyphicon-chevron-left" ng-click="prevQuestion()"></span>
+        ( {{ currentQuestionNumber() }} / {{ totalQuestions() }} )
+        <span class="glyphicon glyphicon-chevron-right" ng-click="nextQuestion()"></span>
+    </h4>
+
+</div>
+
+<!--============================================================================-->
+<!--============================================================================-->
+<!--============================================================================-->
+<!--============================================================================-->
+<div class="current-question">
+    <div question-summary></div>
+
+    <!--<pre>{{ question | json }}</pre>-->
+
+    <div class="well centered-content">
+        <question-answer></question-answer>
+    </div>
+
+</div>
+
+<!--===================================================================================-->
+<!--===================================================================================-->
+<!--===================================================================================-->
+<!--===================================================================================-->
+
+<!--<div class="centered-content">-->
+    <!--<a ui-sref=".questionList" class="btn btn-primary">-->
+        <!--<span class="glyphicon glyphicon-chevron-down"></span>-->
+        <!--Show Questions of Quiz-->
+        <!--<span class="glyphicon glyphicon-chevron-down"></span>-->
+    <!--</a>-->
+<!--</div>-->
+
+<div class="quiz-session-progress centered-content">
+    <h4>All Questions:<h4>
+    <div class="question-tiles clearfix">
+        <div
+            ng-repeat="question in quiz.questions"
+            ng-class="{
+            active: $index === currentQuestionIndex(),
+            answered: questionAnswered(question)
+            }"
+            >
+            <div question-tile ng-click="setQuestionByIndex($index)"></div>
+        </div>
+    </div>
+</div>
+
+</div>

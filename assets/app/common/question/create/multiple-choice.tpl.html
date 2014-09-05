@@ -1,0 +1,42 @@
+<div class="new-question__type--multiple-choice">
+    <h4>Add options and select the correct answer</h4>
+    <br>
+
+    <!--<form name="answer-options" ng-controller="Ctrl">-->
+    <form name="answer-options" >
+
+        <div class="input-group answer-option" ng-repeat="option in question.answer.options track by $index" >
+            <!--<label class="clickable">-->
+                <!--<input type="radio" ng-model="question.correctOption" ng-value="$index" >-->
+                <span class="input-group-addon"
+                    ng-click="question.answer.correctOption = $index"
+                    ng-class="{correct: $index === question.answer.correctOption}"
+                >
+                    <input type="radio" tabindex="-1" ng-model="question.answer.correctOption" ng-value="$index" >
+                </span>
+            <!--</label>-->
+            <input type="text" class="answer-option--text-input form-control input-sm" placeholder="Add option..."
+                ng-model="question.answer.options[$index]"
+                ng-keypress="addMultipleChoiceOptionOnKey($event)"
+                ng-class="{correct: $index === question.answer.correctOption}"
+            >
+            <div class="option-remove-btn glyphicon glyphicon-remove-circle"
+                ng-click="removeMultipleChoiceOption($index)"
+                >
+            </div>
+        </div>
+
+    </form>
+    <div class="add-answer-option">
+        <button type="button" class="btn btn-sm btn-success" ng-click="addMultipleChoiceOption()">
+            <div class="glyphicon glyphicon-plus-sign"></div>
+            option
+            <!--...-->
+            <!--...add Option-->
+            <!--add Option-->
+        </button>
+        <!--<button type="button" class="btn btn-success" ng-click="answer.addOption(answer.newOption.text)">+Add Option</button>-->
+        <!--<input type="text" ng-model="newOption" />-->
+    </div>
+
+</div>

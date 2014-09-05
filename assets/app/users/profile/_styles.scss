@@ -1,0 +1,79 @@
+
+.user-info{
+    padding: 10px;
+  /*background: whitesmoke;*/
+}
+
+
+.user-profile {
+     & .user-current-quiz-sessions{
+
+     }
+}
+
+
+/*============== Layout =========== */
+/*.user-profile .glyphicon.glyphicon-chevron-up,*/
+/*.user-profile .glyphicon.glyphicon-chevron-down{*/
+    /*font-size: 0.5em;*/
+    /*vertical-align: top;*/
+    /*line-height: 38px;*/
+    /*color: lightgray;*/
+/*}*/
+
+
+/*============== User Data =========== */
+.user-data{
+  float: left;
+  margin-left: 10px;
+  & .username{
+      margin-top: 0;
+  }
+}
+.user-data .label{
+  color: #ACACAC;
+}
+.user-data .data{
+  padding-left: 25px;
+  color: gray;
+}
+.user-data .data.last-activity {
+    color: orange;
+}
+
+/*============== User Avatar =========== */
+.user-avatar{
+  float: left;
+  background: white;
+  padding: 5px;
+  border-radius: 5px;
+  /*box-shadow: 0px 0px 5px -2px black;*/
+  box-shadow: 0px 0px 20px -5px black;
+}
+.user-avatar--image img{
+    $size: 128px;
+    width: $size;
+    height: $size;
+}
+
+.user-avatar--reputation{
+    margin-left: -10px;
+  text-align: center;
+
+  & .star {
+      $size: 22px;
+      width: $size;
+      height: $size;
+      /*background-image: url('/images/icons/star-whole-blue.png');*/
+  }
+}
+.user-avatar--reputation img,
+.user-avatar--reputation .reputation{
+  vertical-align: middle;
+}
+
+
+.user-avatar--reputation .reputation{
+  font-size: 1em;
+}
+

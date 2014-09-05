@@ -1,0 +1,17 @@
+
+<h1>Users</h1>
+
+<div ng-controller="userCtrl">
+    <div my-pagination="users"></div>
+
+    <div search="User" limit="12" search-results="users" pagination-name="users" search-term="searchTerm"></div>
+
+        <div class="" ng-repeat="user in users">
+            <div user-info-tile="user" highlight-text="searchTerm"></div>
+        </div>
+
+        <div class="clearfix"></div>
+
+    <!--<div user-list class="user-list"></div>-->
+    <div my-pagination="users"></div>
+</div>

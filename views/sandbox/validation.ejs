@@ -1,0 +1,118 @@
+
+
+<style>
+    .sandbox input{
+        width: 4em;
+    }
+    .alert.alert-sm{
+        padding: 5px;
+        font-size: 1.5em;
+    }
+    .sandbox .well-sm{
+        padding: 2px;
+        margin-bottom: 1px;
+    }
+
+    .sandbox .badge-danger{
+        background: red;
+    }
+    .sandbox .badge-success{
+        background: green;
+    }
+
+    .sandbox .target{
+        margin-left: 30px;
+    }
+    .sandbox .validation{
+        clear: both;
+    }
+
+</style>
+
+<div ng-controller="sandboxValidationCtrl" class="sandbox">
+    <h1>Sandbox</h1>
+
+    <div class="">
+        <div class="list-group">
+            <div class="list-group-item list-group-item-info">
+                <strong>Action: </strong>
+                <select ng-model="action" ng-options="action for action in actions"></select>
+                <span class="pull-right">
+                    <code>{{ action }}</code>
+                </span>
+            </div>
+
+            <!--<div class="list-group-item list-group-item-info">-->
+            <div class="list-group-item"
+                ng-class="{
+                    'list-group-item-info': actorInstance.username,
+                    'list-group-item-danger': !actorInstance.username,
+                }">
+                <strong>Actor:</strong>
+                <input type="number" class="actor-id" min="1" ng-model="actor.id">
+                <span class="pull-right">
+                    <strong>{{ actorInstance.username }}</strong>
+                    <em ng-show="!actorInstance.username">No such user.</em>
+                </span>
+            </div>
+            <div class="list-group-item list-group-item-info">
+                <strong>Target:</strong>
+                <select ng-model="target.type" ng-options="type for type in targetTypes">
+                </select>
+                <input type="number" min="1" ng-model="target.id" placeholder="Id">
+                <span class="pull-right">
+                    <strong>{{ target.type }}:</strong>
+                    <em>"{{ targetInstance.title }}"</em>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+
+    <div class="validation">
+        <h3>Conditions for <code>{{ action }}</code> </h3>
+        <pre>{{ conditions | json }}</pre>
+
+        <h3>Validation rules for <code>{{ action }}</code></h3>
+        <div ng-repeat="validation in validations">
+            <h3 class="alert alert-sm" ng-class="{'alert-success': validation.result.success, 'alert-danger': !validation.result.success}">
+                {{ validation.rule}}
+                <span class="label" ng-class="{'label-success': validation.result.success, 'label-danger': !validation.result.success}">
+                    {{validation.result.message || 'Valid'}}
+                </span>
+            </h3>
+        </div>
+        <div ng-show="!validations.length">No validation rules</div> 
+    </div>
+
+    <hr>
+    <div class="user-actions">
+        <h3><code>{{ actorInstance.username }}</code>'s stream:</h3>
+        <div ng-repeat="action in rewardedActions" class="well well-sm">
+            <span class="glyphicon" ng-class="{
+                'glyphicon-user': action.userRole == 'actor',
+                'glyphicon-star': action.userRole == 'targetOwner'
+                }"></span>
+            <span class="badge" ng-class="{
+                'badge-danger': action.reward < 0,
+                'badge-success': action.reward > 0,
+                }">{{ action.reward }}</span>
+
+<span ng-bind-html="action.description"></span>
+<!--({{ action.actionType }})-->
+
+            <!--{{ action.actor.username }}-->
+            <!--performed-->
+            <!--<code>{{ action.actionType }}</code>-->
+            <!--with target-->
+            <!--<code>{{ action.targetType }}</code>-->
+            <!--of-->
+            <!--{{ action.targetOwner.username }}-->
+            (<em style="color: gray">{{ action.timeAgo }}</em>)
+        </div>
+    </div>
+
+
+</div>

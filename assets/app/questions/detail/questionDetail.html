@@ -1,0 +1,40 @@
+
+<div question-summary></div>
+
+        <!--<pre>{{ question | json }}</pre>-->
+
+<div class="well centered-content">
+    <question-answer></question-answer>
+</div>
+
+
+<hr>
+
+<!--<h3 class="well well-danger" style="background: hotpink;">TODO: show answer options..</h3>-->
+
+<br>
+
+<div ng-if="!quizzes" class="centered-content">
+    <button class="btn btn-default" ng-click="loadQuizzes()">
+        <span class="glyphicon glyphicon-chevron-down"></span>
+        Show Quizzes where Question appears in
+        <span class="glyphicon glyphicon-chevron-down"></span>
+    </button>
+</div>
+
+<div ng-cloak class="centered-content" ng-if="quizzes && !quizzes.length">
+    <h4 style="color: gray;">
+        <em>Question wasn't used in any quizzes yet.</em>
+    </h4>
+</div>
+
+<div ng-if="quizzes">
+    <h3><em style="color: gray">Question appears in the following quizzes:</em></h3> 
+    <div ng-repeat="quiz in quizzes | orderBy:'createdAt':true track by $index ">
+        <!--<div ng-repeat="quiz in question.quizzes" class="well well-sm">-->
+        <!--{{ quiz.title }}-->
+        <!--<pre>{{quiz | json}}</pre>-->
+        <!--<span class="badge">{{ quiz.questions.length }}</span>-->
+        <div quiz-summary></div>
+    </div>
+</div>

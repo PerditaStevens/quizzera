@@ -1,0 +1,15 @@
+
+@import 'mixins/colors';
+
+$footerHeight: 100px;
+
+footer{
+    min-height: $footerHeight;
+    padding: $footerHeight/2 0;
+    background-color: $bg;
+    border-top: solid 3px $green;
+    > div{ /*direct child is inner wrapper*/
+        color: white;
+        text-align: center;
+    }
+}

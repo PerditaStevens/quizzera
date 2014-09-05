@@ -1,0 +1,95 @@
+
+<div class="summary-container question-summary">
+
+    <div ng-cloak ng-if="question.author && currentUser && currentUser.id !== question.author.id" class="vote-overlay" ng-show="true">
+        <span class="vote-btn vote-btn--up glyphicon glyphicon-thumbs-up"
+            ng-click="voteUp(question)"></span>
+        <span class="vote-btn vote-btn--down glyphicon glyphicon-thumbs-down"
+            ng-click="voteDown(question)"></span>
+    </div>
+
+    <div ng-cloak ng-if="question.author && currentUser && currentUser.id !== question.author.id" class="flag-overlay" ng-show="true"
+        bs-popover container="body" title="Add Flag" content-template="/app/common/flag/addFlagDialog.tpl.html"
+        >
+        <!--<span class="flag-btn glyphicon glyphicon-flag" ng-click="flag(question)" >-->
+        <span class="flag-btn glyphicon glyphicon-flag" >
+            <span class="flag-count" ng-if="question.flags.length"> {{ question.flags.length}} </span>
+        </span>
+    </div>
+
+    <button
+        type="button"
+        class="close"
+        ng-if="question.deletable"
+        ng-click="removeQuestion(question)"
+        >
+        <span aria-hidden="true">&times;</span>
+        <span class="sr-only">Close</span>
+    </button>
+
+    <div class="stats">
+        <!--<div ng-if="question.stats && question.stats.votes" class="ribbon">-->
+        <div ng-if="question.stats" class="ribbon">
+            <div
+                class="votes--icon glyphicon glyphicon-heart"
+                ng-style="{color: (question.stats.votes < 0)? 'black' : 'white'}"
+                >
+            </div>
+            <span class="votes--count"
+                ng-style="{color: (question.stats.votes < 0)? 'black' : 'white'}"
+                >
+                {{ question.stats.votes }}
+            </span>
+
+        </div>
+        <img class="question-type--icon img img-circle" ng-src="/images/icons/{{question.questionType}}.png">
+    </div>
+
+    <div class="content">
+        <a class="title question-title" ui-sref="question({id: question.id})">{{ question.title }}</a>
+        <div class="description question-description">
+        {{ question.description }}
+        </div>
+    </div>
+    <div class="tags">
+
+        <div class="tag" ng-repeat="tag in question.tags">
+            {{tag.text }}
+        </div>
+
+        <input type="text" class="input-add-tag" ng-model="tagData.tag" ng-if="tagData.tagInput">
+
+        <div
+            ng-cloak
+            class="btn-add-tag glyphicon glyphicon-plus"
+            ng-if="currentUser && !tagData.tagInput"
+            ng-click="tagData.tagInput = !tagData.tagInput"
+            >
+        </div>
+
+        <div
+            class="btn-add-tag glyphicon glyphicon-ok"
+            ng-if="tagData.tagInput"
+            ng-click="addTag(question)"
+            >
+        </div>
+
+    </div>
+    <div ng-if="question.author" class="author">
+        <div class="created-at">
+            created at
+            {{ question.createdAt | date}} at {{ question.createdAt | date:'shortTime'}}
+            by
+        </div>
+        <div class="avatar">
+            <img ng-src="{{question.author.thumbnailUrl}}">
+            <a ui-sref="user({id: question.author.id})" class="username">{{ question.author.username }}</a>
+            <div class="reputation">
+                <span class="reputation--icon"><img src="/images/icons/star-whole-blue.png"></span>
+                <span class="reputation--score">{{ question.author.stats.reputation }}</span>
+            </div>
+        </div>
+    </div>
+
+
+</div>

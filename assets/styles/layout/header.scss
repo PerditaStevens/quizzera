@@ -1,0 +1,66 @@
+
+@import 'mixins/colors';
+
+$headerHeight: 50px;
+$headerPadding: 10px;
+$innerHeight: $headerHeight - $headerPadding;
+$halfPadding: $headerPadding/2;
+
+header{
+    background-color: $bg;
+    > div{ /*direct child is inner wrapper*/
+        position: relative;
+        max-width: $content-width;
+        margin: 0 auto;
+        padding: $halfPadding;
+    }
+}
+
+.header__logo{
+    padding: 5px 0;
+    display: block;
+    /*display: inline;*/
+    height: $innerHeight;
+    width: auto;
+}
+
+.header__status{
+    position: absolute;
+    right: $halfPadding;
+    top: $halfPadding;
+}
+
+/* TODO: handle the wrapper for profile-box and login-box together*/
+.header__status--logged-out__login,
+.header__status--logged-out__signup
+{
+    padding-top: 3px;
+    float: left;
+    button{
+        margin: 0 3px;
+    }
+}
+
+.header__status--logged-in{
+    color: white;
+    /*vertical-align: middle;*/
+    img{
+        display: inline-block;
+        vertical-align: middle;
+        height: $innerHeight;
+    }
+    img.reputation{
+        height: $innerHeight - 20px;
+    }
+    .reputation-wrap, .username-wrap{
+        display: inline;
+        vertical-align: middle;
+    }
+    span{
+        vertical-align: middle;
+    }
+}
+
+.header__status--logged-in:hover{
+    background-color: rgba(100, 100, 100, 0.5);
+}

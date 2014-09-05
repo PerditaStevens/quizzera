@@ -1,0 +1,29 @@
+
+<div ng-controller="quizDetailCtrl" ng-init="quiz.id = <%= quizId %>">
+
+
+    <!--<div quiz-summary from-id="<%= quizId %>" ></div>-->
+    <!--<div quiz-summary="quiz"></div>-->
+    <div quiz-summary="quiz"></div>
+
+    <div class="clearfix"></div>
+
+<button class="btn btn-info" ng-click="startQuiz()">
+    <span class="glyphicon glyphicon-chevron-right" style="font-size: 1.2em"></span>
+    <span class="h3">Start Quiz</span>
+</button>
+
+    <!--<div quiz-modal="quiz.id" show="modalVisible" on-close="hideModal()"></div>-->
+    <div quiz-modal="quiz.id" show="modal.show" on-close="closeQuiz()"></div>
+
+    <div class="clearfix"></div>
+
+
+    <div my-pagination="questions"></div>
+    <div search="Question" search-results="questions" search-handler="doSearch" count-handler="doCount" search-term="searchTerm"></div>
+    <div ng-repeat="question in questions">
+        <div question-summary="question" highlight-text="searchTerm"></div>
+    </div>
+    <div my-pagination="questions"></div>
+
+</div>

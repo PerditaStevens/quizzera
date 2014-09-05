@@ -1,0 +1,12 @@
+
+
+.user-bar:hover {
+    cursor: pointer;
+
+}
+
+.user-bar{
+    & .username-wrap .username{
+        color: white !important;
+    }
+}

@@ -1,0 +1,19 @@
+
+<h1>Create New Quiz</h1>
+
+<!--<div quiz-create> </div>-->
+
+<div ng-controller="quizCreateCtrl">
+
+    <div quiz-create-form></div>
+
+    <h3 class="text-center">add Questions...</h3>
+    <div quiz-create-question-form></div>
+
+    <div class="questions--added">
+        <div ng-repeat="question in $storage.quiz.questions">
+            <div question-summary="question"></div>
+        </div>
+    </div>
+
+</div>

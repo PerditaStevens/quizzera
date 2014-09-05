@@ -1,0 +1,32 @@
+
+@import 'mixins/colors';
+
+$minHeightContent: 800px;
+$content-padding: 25px;
+
+.main-content{
+    background-color: #eee;
+    background-image:url('/images/patterns/honey_im_subtle.png');
+    background-image:url('/images/patterns/shl.png');
+    background-image:url('/images/patterns/brushed.png');
+    background-repeat:repeat;
+    min-height: $minHeightContent;
+    > .main-content__wrapper{ /*direct child is inner wrapper*/
+        position: relative;
+        max-width: $content-width;
+        margin: 0 auto;
+        padding: $content-padding;
+        background-color: $fg;
+        text-align: justify;
+        min-height: $minHeightContent;
+        padding-top: 50px;
+    }
+}
+
+.main-content > .main-content__wrapper .navbar{
+    margin:         -$content-padding;
+    margin-bottom:   $content-padding;
+}
+
+
+

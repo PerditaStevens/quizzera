@@ -1,0 +1,26 @@
+
+<h3> Question Explorer </h3>
+
+<div ng-controller="questionCtrl">
+
+    <!--<div ng-controller="createQuestionCtrl" ng-show="user">-->
+    <div ng-controller="createQuestionCtrl">
+        <button ng-show="<%= JSON.stringify(req.user) %>" class="btn btn-success" ng-click="showQuestionCreationModal()"><span class="glyphicon glyphicon-plus-sign"></span> add question</button>
+    </div>
+
+
+    <div pagination="questions"></div>
+
+    <div search="Question" tag-search="true" search-results="questions" pagination-name="questions" search-term="searchTerm"></div>
+
+    <div class="question-list">
+        <div class="" ng-repeat="question in questions">
+            <div question-summary="question"
+                questions="questions"
+                highlight-text="searchTerm"
+                ></div>
+        </div>
+        <div pagination="questions"></div>
+    </div>
+</div>
+

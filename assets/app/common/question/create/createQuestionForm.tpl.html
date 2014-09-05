@@ -1,0 +1,35 @@
+<div class="create-question-form">
+    <form role="form" ng-submit="addQuestion()">
+        <div class="form-group">
+            <label for="question-title">Question Title</label>
+            <input ng-model="question.title" type="text" class="form-control" id="question-title" placeholder="Summary">
+        </div>
+        <div class="form-group">
+            <label for="question-description">Question Description</label>
+            <textarea ng-model="question.description" class="form-control" rows="3" id="question-description" placeholder="Full question text here..."></textarea>
+        </div>
+        <div class="form-group">
+            <label for="question-tags">Tags</label>
+            <div placeholder="Type in a tag and press return.">
+                <tags-input ng-model="question.tags" class="tags-input" id="question-tags" min-length="2">
+                <auto-complete source="loadTags($query)" min-length="1"></auto-complete>
+                </tags-input>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="question-type">Question Type</label>
+            <div class="tabs" ng-model="tabs.activeTab" bs-tabs="tabs" id="question-type"> </div>
+        </div>
+        <button type="submit" class="btn btn-default btn-lg btn-block">
+            <div class="glyphicon glyphicon-plus-sign"></div>
+            Add Question
+        </button>
+
+
+    </form>
+    <!--<div ng-repeat="question in $storage.quiz.questions">-->
+    <!--<div question-summary="question"></div>-->
+    <!--</div>-->
+
+</div>
+

@@ -1,0 +1,8 @@
+
+<div class="centered-content">
+    <ul class="pagination">
+        <li><a ng-class="{disabled: pagination.isFirstPage()}" ng-click="pagination.previous()">&laquo;</a></li>
+        <li ng-repeat="page in pagination.getPageList()" ng-class="{active: pagination.isOnPage(page)}" ng-click="pagination.setPage(page)"><a>{{page}}</a></li>
+        <li><a ng-class="{disabled: pagination.isLastPage()}" ng-click="pagination.next()">&raquo;</a></li>
+    </ul>
+<div>

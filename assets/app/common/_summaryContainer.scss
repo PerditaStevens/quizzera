@@ -1,0 +1,252 @@
+
+
+/*  
+ *  $container-width: 910px;
+ *  $stats-width: 180px;
+ *  
+ *  
+ */
+
+$qs-container-width: 900px;
+$qs-ribbon-width: 100px;
+$qs-stats-width: 130px;
+
+
+.summary-container{
+    width: $qs-container-width;
+    height: 180px;
+    background: whitesmoke;
+    position: relative;
+    box-shadow: 0 0 10px -2px black;
+    margin-left: 5px;
+    margin-bottom: 20px;
+}
+
+.summary-container .ribbon{
+    position: absolute;
+    left: -10px;
+    top: 20px;
+    width: $qs-ribbon-width;
+    height: 45px;
+    /* background: #F96080; */
+    background: #F43059;
+    box-shadow: 0 0 5px -1px black;
+}
+
+.summary-container .ribbon:before{
+    content:" ";
+    position: absolute;
+    bottom: -10px;
+
+    border-top: 5px solid darkred;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid darkred;
+    border-left: 5px solid transparent;
+}
+
+.summary-container .ribbon .votes--icon{
+    color: white;
+    font-size: 1.5em;
+    vertical-align: middle;
+    line-height: 45px;
+    margin-left: 5px;
+}
+
+.summary-container .ribbon .votes--count{
+    color: white;
+    font-size: 1.5em;
+    vertical-align: middle;
+    line-height: 45px;
+    margin-left: 5px;
+}
+
+
+.summary-container .stats{
+    float: left;
+    width: $qs-stats-width;
+    height: 100%;
+
+    padding: 20px;
+    padding-top: 70px;
+}
+
+
+.summary-container .content{
+    width: 100%;
+    height: 110px;
+    padding: 10px;
+    padding-top: 20px;
+}
+
+.summary-container .content .title{
+    height: 30px;
+    font-size: 1.5em;
+}
+.summary-container .content .description{
+    margin-top: 5px;
+    color: gray;
+    height: 80px;
+}
+
+.summary-container .tags{
+    height: 70px;
+    width: 650px;
+}
+
+.summary-container .tags .tag,
+.summary-container .tags .btn-add-tag,
+.summary-container .tags .input-add-tag
+{
+    @extend .tag-style;
+    float: left;
+    margin-left: 5px;
+}
+
+.summary-container .tags .btn-add-tag{
+    background: white;
+    $shadow-color: lime;
+    /*box-shadow: 0px 0px 5px -1px $shadow-color;*/
+    height: 25px;
+    line-height: 20px;
+    vertical-align: middle;
+    color: green;
+
+    &:hover{
+        cursor: pointer;
+        /*$hover-color: lime;*/
+        /*$hover-color: rgba(0, 255, 0, 0.4);*/
+        $hover-color: green;
+        /*background: $hover-color;*/
+        box-shadow: 0px 0px 5px -1px $hover-color;
+    }
+}
+
+.summary-container .author{
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+    padding: 5px;
+    padding-top: 0;
+    /* background: white; */
+}
+
+.summary-container .author .created-at{
+    font-style: italic;
+    color: gray;
+}
+.summary-container .author .avatar{
+    padding: 0;
+}
+.summary-container .author .avatar img{
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+}
+.summary-container .author .avatar .reputation--icon{
+    vertical-align: middle;
+    line-height: 20px;
+}
+.summary-container .author .avatar .reputation--icon img{
+    $size: 20px;
+    width: $size;
+    height: $size;
+
+}
+.summary-container .author .avatar .reputation--score{
+    margin-top: -10px;
+    vertical-align: middle;
+    line-height: 20px;
+}
+
+.summary-container .close{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    color: red;
+}
+
+.summary-container .vote-overlay{
+    @extend .vote-overlay-buttons;
+    position: absolute;
+    width: 15%;
+    z-index: 100;
+    left: 50% - 7.5%;
+    /*top: 0px;*/
+    top: -10px;
+    font-size: 2em;
+    text-align: center;
+    /*background: gray;*/
+
+    & .vote-btn{
+        opacity: 0.6;
+        /*color: whitesmoke;*/
+        @include transition (opacity 0.05s linear);
+        @include transition (color 0.1s linear);
+    }
+}
+
+/*reveal vote buttons on hover*/
+/*NOTE: using opacity might be buggy on quesiton detail modal!!!*/
+.summary-container:hover .vote-overlay .vote-btn,
+.summary-container:hover .flag-overlay .flag-btn{
+    display: inline-block;
+    opacity: 1;
+}
+.summary-container:hover .vote-overlay .vote-btn{
+    color: gray;
+}
+
+.summary-container .flag-overlay{
+    /*@extend .vote-overlay-buttons;*/
+    /*opacity: 0;*/
+
+    /*color: whitesmoke;*/
+
+    position: absolute;
+    /*width: 15%;*/
+    z-index: 100;
+    top: 0px;
+    right: 15px;
+    font-size: 2em;
+    text-align: center;
+    /*background: gray;*/
+
+    & .flag-btn{
+        opacity: 0.6;
+        /*color: whitesmoke;*/
+        &:hover{
+            color: red;
+        }
+        @include transition (opacity 0.05s linear);
+        @include transition (color 0.1s linear);
+    }
+
+    & .flag-btn .flag-count{
+        position: absolute;
+        /*top: -5px;*/
+        /*right: -10px;*/
+        bottom: -5px;
+        right: 0;
+        font-size: 0.4em;
+        font-weight: bold;
+        /*color: red;*/
+        color: white;
+        background: red;
+        /*padding: 2px;*/
+        border-radius: 50%;
+
+        $size: 15px;
+        width: $size;
+        height: $size;
+        line-height: $size - 2px;
+        vertical-align: middle;
+
+        /*margin-left: -10px;*/
+    }
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+

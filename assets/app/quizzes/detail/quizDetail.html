@@ -1,0 +1,41 @@
+
+<div>
+    <br>
+</div>
+
+<div quiz-summary></div>
+
+<hr>
+<div class="take-quiz-btn centered-content">
+    <!--<a class="btn btn-success btn-lg" href="#/quiz/{{quiz.id}}/take" ng-disabled="!currentUser">-->
+    <a
+        class="btn btn-lg"
+        ui-sref="quizSession({id: quiz.id})"
+        ng-class="{
+            'btn-warning': isQuizStarted(),
+            'btn-success': !isQuizStarted()
+        }"
+        ng-disabled="!currentUser">
+        <span ng-if="!isQuizStarted()"> Take Quiz </span>
+        <span ng-if="isQuizStarted()"> Continue Quiz </span>
+    </a>
+    <div class="not-logged-in-note" ng-if="!currentUser">
+        you need to be logged in to take quizzes
+    </div>
+</div>
+<hr>
+
+<!--<div class="centered-content">-->
+    <!--<a ui-sref=".questionList" class="btn btn-primary">-->
+        <!--<span class="glyphicon glyphicon-chevron-down"></span>-->
+        <!--Show Questions of Quiz-->
+        <!--<span class="glyphicon glyphicon-chevron-down"></span>-->
+    <!--</a>-->
+<!--</div>-->
+
+
+<br>
+
+<div ng-repeat="question in quiz.questions">
+    <div question-summary></div>
+</div>

@@ -1,0 +1,65 @@
+{
+    "Error.Passport.Password.Invalid": "The provided password is invalid!",
+    "Error.Passport.Password.Wrong": "Wrong credentials!",
+    "Error.Passport.Password.NotSet": "Oh no, you haven't set a password yet!",
+    "Error.Passport.Username.NotFound": "Wrong credentials!",
+    "Error.Passport.User.Exists": "This username is already taken.",
+    "Error.Passport.Email.NotFound": "That email doesn't seem right",
+    "Error.Passport.Email.Missing": "You need to supply an email-address for verification",
+    "Error.Passport.Email.Exists": "This email already exists. So try logging in.",
+    "Error.Passport.Username.Missing": "You need to supply a username",
+    "Error.Passport.Password.Missing": "Oh no, you haven't set a password yet!",
+
+
+    "VOTE_UP": {
+        "SUCCESS": "YOOOO - Your vote has been submitted.",
+        "FAIL": {
+            "ACTOR_NOT_OWNS_TARGET": "You can't vote on your own %s.",
+            "ACTION_IS_UNIQUE": "You did already vote on this %s.",
+            "ACTOR_HAS_ENOUGH_REPUTATION": "Not enough reputation to upvote."
+        }
+    },
+
+    "VOTE_DOWN": {
+        "SUCCESS": "Your vote has been submitted.",
+        "FAIL": {
+            "ACTOR_NOT_OWNS_TARGET": "You can't vote on your own %s.",
+            "ACTION_IS_UNIQUE": "You did already vote on this %s.",
+            "ACTOR_HAS_ENOUGH_REPUTATION": "Not enough reputation to downvote."
+        }
+    },
+
+    "FLAG_SPAM": {
+        "FAIL": {
+            "placeholder": {
+                "ACTION_IS_UNIQUE": "You did already flag this %s.",
+                "ACTOR_HAS_ENOUGH_REPUTATION": "You don't have enough reputation yet to flag."
+            }
+        }
+    },
+
+    "CREATE_QUESTION": {
+        "FAIL": "Oops, something went wrong. Your question was not created."
+    },
+    "CREATE_QUIZ": {
+        "FAIL": "Oops, something went wrong. Your quiz was not created."
+    },
+
+    "ADD_QUESTION_TO_QUIZ": {
+        "FAIL.ACTOR_OWNS_TARGET": "You can only add questions to quizzes you own."
+    },
+    "ADD_TAG": {
+        "SUCCESS": "Tag added successfully.",
+        "FAIL": {
+            "ACTOR_HAS_ENOUGH_REPUTATION": "You don't have enough reputation.",
+            "TARGET_NOT_HAS_TAG_YET": "Tag wasn't added, it already exists."
+        }
+    },
+
+    "ANSWER_QUESTION": {
+        "FAIL": {
+            "ACTION_IS_UNIQUE": "You did answer this question before.",
+            "ACTOR_HAS_ENOUGH_RECENT_REPUTATION": "You must have contributed recently to answer more questions."
+        }
+    }
+}

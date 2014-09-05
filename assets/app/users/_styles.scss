@@ -1,0 +1,31 @@
+
+.directive-user-list{
+    @include clearfix;
+}
+
+
+.directive-user-info-tile{
+    $margin: 10px;
+    $padding: 5px;
+    $tile-width: ($content-width + 2*$margin + 2*$padding) / 5;
+    $thumbnail-size: 48px;
+
+    float: left;
+    width: $tile-width;
+    margin: $margin;
+    padding: $padding;
+    background: whitesmoke;
+
+    & img.profile {
+        float: left;
+        width: $thumbnail-size;
+        height: $thumbnail-size;
+    }
+
+    & .user-info {
+        margin-left: $thumbnail-size;
+        padding-left: 5px;
+        width: ($tile-width - $thumbnail-size);
+    }
+}
+

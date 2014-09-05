@@ -1,0 +1,66 @@
+
+<div class="action-record action-record--to-string well well-sm">
+
+    <!--<pre>{{ record | json}}</pre>-->
+
+    <span class="glyphicon" ng-class="{
+        'glyphicon-user': isActor(),
+        'glyphicon-star': !isActor()
+        }">
+    </span>
+
+    <span class="badge" ng-class="{
+        'badge-danger': getReward() < 0,
+        'badge-success': getReward() > 0,
+        'badge-default': !getReward(),
+        }">
+        {{ getReward() }}
+    </span>
+    <!--<span ng-bind-html="record.humanReadable"></span>-->
+
+    <span ng-if="!isActor()" class="actor">
+        <a ng-href="#/user/{{record.actor.id}}">{{ record.actor.username}}</a>
+    </span>
+    <span ng-if="isActor()" class="actor actor--self">
+        {{ record.actor.username}}
+    </span>
+
+    <span class="fillword">
+        did
+    </span>
+    <span class="action">
+        <code>{{ actionTypeToString() }}</code>
+    </span>
+    <span class="fillword">
+    </span>
+    <span class="target-type">
+        {{ record.targetType }}
+    </span>
+    <span class="target-title">
+        <!--"<a ng-href="#/{{record.targetType|lowercase}}/{{record.target.id}}">{{ record.target.title }}</a>"-->
+        "<a ui-sref="{{record.targetType|lowercase}}({id: {{record.target.id}} })">{{ record.target.title }}</a>"
+    </span>
+
+
+    <span ng-if="record.targetOwner.id !== record.actor.id">
+        <span class="fillword">
+            of
+        </span>
+        <span ng-if="!isTargetOwner()" class="target-owner">
+            <a ng-href="#/user/{{record.targetOwner.id}}">{{ record.targetOwner.username }}</a>
+        </span>
+        <span ng-if="isTargetOwner()" class="target-owner target-owner--self">
+            {{ record.targetOwner.username }}
+        </span>
+
+    </span>
+
+    <span class="fillword" ng-if="record.actionType === 'ANSWER_QUESTION'">
+        for the first time
+    </span>
+
+    <span class="created-at">
+        (<span am-time-ago="record.createdAt"></span>)
+    </span>
+
+</div>

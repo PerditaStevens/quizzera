@@ -1,0 +1,85 @@
+
+.create-question-form{
+    padding: 10px;
+    margin: 0 75px;
+    border-radius: 5px;
+    background: tint(#F43059, 80%);
+    box-shadow: 0px 0px 10px -2px black;
+
+    & .tabs{
+        padding: 5px;
+        border-radius: 5px;
+        background: whitesmoke;
+    }
+
+    & .answer--true-or-false{
+        & .btn {
+            opacity: 0.5;
+        }
+        & .btn.active {
+            opacity: 1;
+        }
+    }
+
+
+}
+
+
+.new-question__type--true-or-false .center-block{
+    width: 150px;
+}
+
+.new-question__type--true-or-false .btn{
+    opacity: 0.5;
+}
+
+.new-question__type--true-or-false .btn.active {
+    opacity: 1.0;
+}
+
+
+
+.new-question__type--multiple-choice{
+
+    & .input-group-addon{
+        cursor: pointer;
+        &.correct{
+            background: #E4FFE4;
+        }
+    }
+
+    & .answer-option--text-input{
+        width: 90%;
+        &.correct{
+            background: #E4FFE4;
+        }
+    }
+
+    & .option-remove-btn{
+        $btn-size: 15px;
+        $btn-hover-size: $btn-size * 1.1;
+        $btn-hover-size-diff: $btn-hover-size - $btn-size;
+        $margin-left: 5px;
+
+        cursor: pointer;
+        margin-left: $margin-left;
+
+
+        color: gray;
+        font-size: $btn-size;
+        &:hover{
+            color: #D9534F;
+            font-size: $btn-hover-size;
+            margin-left: $margin-left - $btn-hover-size-diff / 2;
+        }
+
+        vertical-align: middle;;
+        line-height: 30px;
+
+    }
+
+    & .add-answer-option{
+        margin-top: 5px;
+    }
+
+}

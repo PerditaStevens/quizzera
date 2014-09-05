@@ -1,0 +1,26 @@
+
+<h1> Quiz Explorer </h1>
+
+<!--<a href="#/quiz/create" ng-if="currentUser" class="btn btn-success">-->
+<!--<a ui-sref="quizCreation" ng-if="currentUser" class="btn btn-success">-->
+<a ui-sref="quizCreation" class="btn btn-success" ng-disabled="!currentUser">
+    <span class="glyphicon glyphicon-plus-sign"></span> 
+    <span>create Quiz</span>
+</a>
+<span ng-if="!currentUser">
+    <div class="not-logged-in-note">
+        You need to be logged in to create questions.
+    </div>
+</span>
+
+
+<div class="clearfix"></div>
+
+<div my-pagination="quizzes"></div>
+<div search="Quiz" search-text="quizzesSearch.text" on-search="quizzesSearch.handle"></div>
+<div ng-repeat="quiz in quizzes | orderBy:'createdAt':true track by $index ">
+    <div quiz-summary="quiz" highlight-text="searchTerm"></div>
+</div>
+
+<div my-pagination="quizzes"></div>
+

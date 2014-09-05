@@ -1,0 +1,15 @@
+
+
+/* NOTE:
+ * ======
+ * question-summary uses summary-container; these are special styles/overrides
+ */
+
+.question-summary .stats .question-type--icon{
+    position: absolute;
+    bottom: 10px;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 0 0 2px white;
+}
+

@@ -1,0 +1,18 @@
+
+.clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin background-opacity($color, $opacity: 0.3) {
+    background: $color; /* The Fallback */
+    background: rgba($color, $opacity);
+}
+
+@mixin text-opacity($color, $opacity: 0.3) {
+    color: $color; /* The Fallback */
+    color: rgba($color, $opacity);
+}

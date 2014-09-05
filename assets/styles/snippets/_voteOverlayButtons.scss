@@ -1,0 +1,53 @@
+
+
+.vote-overlay-buttons{
+    /*$button-opacity: 0.8;*/
+    $button-opacity: 0.0;
+    $shadow-dist: 2px;
+    $shadow-spread: 5px;
+    $shadow-color: transparent;
+
+    $hover-tint-amount: 30%;
+    $tint-amount: 50%;
+    $vote-up-color-hover: tint(green, $hover-tint-amount);
+    $vote-down-color-hover: tint(red, $hover-tint-amount);
+    $vote-up-color: tint($vote-up-color-hover, $tint-amount);
+    $vote-down-color: tint($vote-down-color-hover, $tint-amount);
+
+
+    & .vote-btn{
+        cursor: pointer;
+        padding: 10px;
+        @include border-radius(50%);
+
+        /*@include transition (background 0.1s ease-in-out 0.1s);*/
+        /*@include transition (background 0.1s linear 0.1s);*/
+
+        color: whitesmoke;
+        @include transition (color 0.1s linear);
+
+    }
+    & .vote-btn--up{
+        @include transform(scale(-1, 1));
+        /*box-shadow: -$shadow-dist $shadow-dist $shadow-spread $shadow-color;*/
+
+        /*color: $vote-up-color;*/
+        background-color: rgba($vote-up-color, $button-opacity);
+        &:hover{
+            color: $vote-up-color-hover !important;
+            background-color: rgba($vote-up-color-hover, $button-opacity);
+        }
+        @include transition (color 0.1s linear);
+    }
+    & .vote-btn--down{
+        /*box-shadow: $shadow-dist $shadow-dist $shadow-spread $shadow-color;*/
+
+        /*color: $vote-down-color;*/
+        background-color: rgba($vote-down-color, $button-opacity);
+        &:hover {
+            color: $vote-down-color-hover !important;
+            background-color: rgba($vote-down-color-hover, $button-opacity);
+        }
+        @include transition (color 0.1s linear);
+    }
+}

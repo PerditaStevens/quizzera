@@ -1,0 +1,152 @@
+
+<div class="user-profile">
+
+
+    <div class="user-info clearfix">
+        <div class="user-avatar">
+            <div class="user-avatar--image">
+                <img ng-cloak ng-src="{{ user.thumbnailUrl }}">
+            </div>
+            <div class="user-avatar--reputation">
+                <!--<div class="star"></div>-->
+                <img class="star" src="/images/icons/star-whole-blue.png" alt="reputation-star">
+                <span class="reputation">{{ user.stats.reputation }}</span>
+            </div>
+        </div>
+        <div class="user-data">
+
+            <h2 class="username">{{ user.username }}</h2>
+            <table>
+                <tr>
+                    <td class="label">questions created</td>
+                    <td class="data"> {{ user.questions.length }}</td>
+                </tr>
+                <tr>
+                    <td class="label">quizzes created</td>
+                    <td class="data"> {{ user.quizzes.length }}</td>
+                </tr>
+                <tr>
+                    <td class="label">member since</td>
+                    <td class="data"> <span am-time-ago="user.createdAt"></span> </td>
+
+                </tr>
+                <tr>
+                    <td class="label">last activity</td>
+                    <td class="data last-activity"> <span am-time-ago="user.stats.lastActivity"></span> </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+     <!--///// PRIVATE ?? ///////-->
+
+    <div ng-if="!show.sessionQuizzes" class="centered-content">
+        <button class="btn btn-default" ng-click="show.sessionQuizzes = true">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+            Show Quizzes {{user.username}} is currently working on
+            <span class="glyphicon glyphicon-chevron-down"></span>
+        </button>
+    </div>
+    <div ng-cloak class="centered-content" ng-if="show.sessionQuizzes && !sessionQuizzes.length">
+        <h4 style="color: gray;">
+            <em>{{user.username}} didn't do any Quizzes yet.</em>
+        </h4>
+    </div>
+    <div ng-if="show.sessionQuizzes && sessionQuizzes.length">
+        <h3><em style="color: gray">Quizzes {{user.username}} is currently working on:</em></h3> 
+
+         <div ng-repeat="quiz in sessionQuizzes">
+             <progress>
+                 <bar ng-repeat="bar in percentages track by $index" value="bar.value" type="{{bar.type}}">
+                 <span ng-hide="bar.value < 5">{{bar.value}}% </span>
+                 <!--<span ng-hide="bar.value < 5">{{bar.value}}% {{bar.name}}</span>-->
+                 </bar>
+             </progress>
+             <div quiz-summary></div>
+         </div>
+        
+    </div>
+
+
+    <hr>
+
+     <!--<div class="user-current-quiz-sessions" ng-if="sessionQuizzes.length">-->
+         <!--<h3>Quizzes that {{user.username}} is currently working on:</h3>-->
+
+         <!--<div ng-repeat="quiz in sessionQuizzes">-->
+             <!--<div quiz-summary></div>-->
+         <!--</div>-->
+         <!--<hr>-->
+     <!--</div>-->
+
+     <!--///// END PRIVATE ///////-->
+
+
+
+
+
+
+
+
+
+
+
+
+    <div ng-if="!quizzes" class="centered-content">
+        <button class="btn btn-default" ng-click="loadQuizzes()">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+            Show Quizzes by {{user.username}}
+            <span class="glyphicon glyphicon-chevron-down"></span>
+        </button>
+    </div>
+    <div ng-cloak class="centered-content" ng-if="quizzes && !quizzes.length">
+        <h4 style="color: gray;">
+            <em>{{user.username}} didn't create any Quizzes yet.</em>
+        </h4>
+    </div>
+    <div ng-if="quizzes">
+        <h3><em style="color: gray">Quizzes by {{user.username}}:</em></h3> 
+        <div ng-repeat="quiz in quizzes | orderBy:'createdAt':true track by $index ">
+            <div quiz-summary></div>
+        </div>
+    </div>
+
+    <hr>
+
+
+
+    <div ng-if="!questions" class="centered-content">
+        <button class="btn btn-default" ng-click="loadQuestions()">
+            <span class="glyphicon glyphicon-chevron-down"></span>
+            Show Questions by {{user.username}}
+            <span class="glyphicon glyphicon-chevron-down"></span>
+        </button>
+    </div>
+    <div ng-cloak class="centered-content" ng-if="questions && !questions.length">
+        <h4 style="color: gray;">
+            <em>{{user.username}} didn't create any Questions yet.</em>
+        </h4>
+    </div>
+    <div ng-if="questions">
+        <h3><em style="color: gray">Questions by {{user.username}}:</em></h3> 
+        <div ng-repeat="question in questions | orderBy:'createdAt':true track by $index ">
+            <div question-summary></div>
+        </div>
+    </div>
+
+
+    <hr>
+
+    <div ng-cloak class="centered-content" ng-if="stream && !stream.length">
+        <h4 style="color: gray;">
+            <em>{{user.username}} wasn't active in the communit yet.</em>
+        </h4>
+    </div>
+    <div ng-if="stream">
+        <h3><em style="color: gray">{{user.username}}'s community stream:</em></h3> 
+        <div ng-repeat="record in stream | orderBy:'createdAt':true track by $index " >
+            <div action-record-to-string="record" user="user"></div>
+        </div>
+    </div>
+
+</div>

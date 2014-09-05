@@ -1,0 +1,60 @@
+<h1>Questions</h1>
+
+<!--<div ng-controller="createQuestionCtrl" ng-show="user">-->
+<!--<div ng-controller="createQuestionCtrl">-->
+    <!--<button ng-if="currentUser" class="btn btn-success" ng-click="showQuestionCreationModal()"><span class="glyphicon glyphicon-plus-sign"></span> add question</button>-->
+<!--</div>-->
+
+
+<!--<div class="well" style="background: hotpink">-->
+    <!--<h1>TODO: fix question creation</h1>-->
+<!--</div>-->
+
+<!--<div ng-include="/app/common/question/summary/questionSummary.tpl.html"></div>-->
+
+<div >
+  <accordion close-others="false">
+
+      <accordion-group>
+          <accordion-heading>
+          <div class="centered-content">
+              <!--<button class="btn btn-success btn-lg btn-block" ng-click="status.open = !status.open">-->
+              <button class="btn btn-success">
+                      <i class="glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                      <span style="font-size: 1.5em">Create New Question</span>
+                      <i class="glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-left': !status.open}"></i>
+              </button>
+          </div>
+          </accordion-heading>
+
+          <div ng-if="currentUser">
+              <div create-question-form></div>
+          </div>
+          <div ng-if="!currentUser">
+              <div class="not-logged-in-note">
+                  You need to be logged in to create questions.
+              </div>
+          </div>
+
+      </accordion-group>
+  </accordion>
+</div>
+
+
+<div my-pagination="questions"></div>
+
+<!--<div search="Question" tag-search="true" search-handler="textSearch" count-handler="textSearchCount" search-results="questions" pagination-name="questions" search-term="searchTerm"></div>-->
+<div search="Question" on-search="questionSearch.handle" search-text="questionSearch.text"></div>
+
+
+
+<div class="question-list">
+    <div ng-repeat="question in questions | orderBy : 'createdAt' : true track by $index ">
+        <div question-summary="question"
+            questions="questions"
+            highlight-text="searchTerm"
+            ></div>
+    </div>
+    <div my-pagination="questions"></div>
+</div>
+

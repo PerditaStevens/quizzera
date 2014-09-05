@@ -1,0 +1,30 @@
+<div class="quiz-create-form">
+    <form role="form">
+        <div class="form-group">
+            <label for="new-quiz-title">Quiz Title</label>
+            <!--<input type="text" id="new-quiz-title" ng-model="$storage.quiz.title" class="form-control" placeholder="Summary">-->
+            <input type="text" id="new-quiz-title" ng-model="quiz.title" class="form-control" placeholder="Summary">
+        </div>
+        <div class="form-group">
+            <label for="new-quiz-description">Quiz Description</label>
+            <!--<textarea id="new-quiz-description" ng-model="$storage.quiz.description" class="form-control" rows="3"  placeholder="Full quiz description..."></textarea>-->
+            <textarea id="new-quiz-description" ng-model="quiz.description" class="form-control" rows="3"  placeholder="Full quiz description..."></textarea>
+        </div>
+        <div class="form-group">
+            <label for="new-quiz-tags">Tags</label>
+            <div placeholder="Type in a tag and press return.">
+                <!--<tags-input ng-model="$storage.quiz.tags" class="tags-input" id="new-quiz-tags" min-length="2">-->
+                <tags-input ng-model="quiz.tags" class="tags-input" id="new-quiz-tags" min-length="2">
+                <auto-complete source="loadTags($query)" min-length="1"></auto-complete>
+                </tags-input>
+            </div>
+        </div>
+
+
+        <button type="submit" ng-click="create()" ng-disabled="validate()" class="btn btn-success btn-lg btn-block">
+            <div class="glyphicon glyphicon-check"></div>
+            Save Quiz
+        </button>
+
+    </form>
+</div>

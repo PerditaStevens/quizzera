@@ -1,0 +1,22 @@
+
+<div class="popover" tabindex="-1">
+  <div class="arrow"></div>
+  <h3 class="popover-title" ng-bind-html="title" ng-show="title"></h3>
+  <div class="popover-content">
+      <form class="form-inline" role="form" method="post" action="/auth/local/register">
+          <div class="form-group">
+              <label class="sr-only" for="input-signup-username">Username</label>
+              <input type="text" class="form-control" id="input-signup-username" name="username" placeholder="Username">
+          </div>
+          <div class="form-group">
+              <label class="sr-only" for="input-signup-email">Email address</label>
+              <input type="email" class="form-control" id="input-signup-email" name="email" placeholder="Email">
+          </div>
+          <div class="form-group">
+              <label class="sr-only" for="input-signup-password">Password</label>
+              <input type="password" class="form-control" id="input-signup-password" name="password" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-default">Sign in</button>
+      </form>
+  </div>
+</div>

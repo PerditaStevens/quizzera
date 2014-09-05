@@ -1,0 +1,43 @@
+
+<div>
+    <!--<div class="btn-group" ng-model="flagData.type" bs-radio-group>-->
+        <!--<label class="btn btn-default">-->
+            <!--<input type="radio" class="btn btn-default" value="SPAM">-->
+            <!--Spam-->
+        <!--</label>-->
+        <!--<label class="btn btn-default">-->
+            <!--<input type="radio" class="btn btn-default" value="FAULTY">-->
+            <!--Faulty-->
+        <!--</label>-->
+        <!--<label class="btn btn-default">-->
+            <!--<input type="radio" class="btn btn-default" value="OFFENSIVE">-->
+            <!--Offensive-->
+        <!--</label>-->
+    <!--</div>-->
+
+    <form role="form" ng-submit="flag(question); $hide()">
+        <div class="btn-group">
+            <label>
+                <input type="radio" value="SPAM" ng-model="flagData.type" bs-radio>
+                Spam
+            </label>
+            <label>
+                <input type="radio" value="FAULTY" ng-model="flagData.type" bs-radio>
+                Faulty
+            </label>
+            <label>
+                <input type="radio" value="OFFENSIVE" ng-model="flagData.type" bs-radio>
+                Offensive
+            </label>
+        </div>
+
+        <br>
+        <input type="text" ng-model="flagData.reason" class="form-control" placeholder="Reason...">
+
+        <br>
+
+        <button class="btn btn-primary">
+            Add Flag
+        </button>
+    </form>
+</div>

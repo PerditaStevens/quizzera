@@ -1,0 +1,25 @@
+
+/* NOTE:
+ * ======
+ * quiz-summary uses summary-container; these are special styles/overrides
+ */
+
+.quiz-summary{
+    margin-bottom: 40px;
+    &.started {
+        background: #FFDBC8 !important;
+    }
+    &.completed{
+        background: #D6FFC8 !important;
+    }
+}
+
+.quiz-summary .ribbon{
+    background: #90AA3F;
+}
+
+.quiz-summary .ribbon:before{
+    border-top: 5px solid darkgreen;
+    border-right: 5px solid darkgreen;
+}
+

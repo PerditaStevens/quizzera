@@ -1,0 +1,17 @@
+<div class="answer answer--true-or-false">
+    <h4>Select whether question is true or false...</h4>
+    <div class="centered-content">
+        <div class="btn-group">
+            <button type="button" class="btn btn-success"
+                ng-class="{active: question.answer.isTrue}"
+                ng-click="question.answer.isTrue = true;">
+                True
+            </button>
+            <button type="button" class="btn btn-danger"
+                ng-class="{active: !question.answer.isTrue}"
+                ng-click="question.answer.isTrue = false;">
+                False
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+
+<style>
+<!--TODO: make STYLES!!!-->
+<!--TODO: make STYLES!!!-->
+<!--TODO: make STYLES!!!-->
+<!--TODO: make STYLES!!!-->
+<!--TODO: make STYLES!!!-->
+<!--TODO: make STYLES!!!-->
+<!--TODO: make STYLES!!!-->
+<!--TODO: make STYLES!!!-->
+    .img--user-profile{
+        width: 100px !important;
+        height: 100px !important;
+    }
+
+    .badge-danger{
+        background: red;
+    }
+    .badge-success{
+        background: green;
+    }
+</style>
+
+<div ng-controller="userViewCtrl" ng-init="userId = '<%= userId %>'">
+
+    <div class="user-profile-summary">
+        <div class="user-profile-portrait">
+            <h1>{{ user.username }}</h1>
+            <img class="img img--user-profile" width="100px" height="100px" ng-src="{{user.thumbnailUrl}}">
+            <br>
+            <div class="author__details--reputation" ng-cloa>
+                <img ng-src="/images/icons/star-whole-blue.png"/>
+                {{ user.stats.reputation }}
+            </div>
+        </div>
+        <div class="user-profile-stats">
+            <span am-time-ago="user.stats.lastActivity" style="color: gray"></span>
+        </div>
+    </div>
+
+<hr>
+
+<!--<h2> {{user.username}}'s Quizzes </h2>-->
+<h2> Quizzes </h2>
+<h3 ng-cloak ng-show="!quizzes.length" class="text-center" style="color: gray">
+    <em>no Quizzes yet</em>
+</h3>
+    <!--<div pagination="quizzes"></div>-->
+    <!--<div search="Quiz" search-results="quizzes" search-term="searchTerm"></div>-->
+    <div ng-repeat="quiz in quizzes" quiz-summary="quiz" highlight-text="searchTerm"></div>
+    <!--<div pagination="quizzes"></div>-->
+<hr>
+
+
+<!--<h2> {{user.username}}'s Questions </h2>-->
+<h2> Questions </h2>
+<div class="question-list">
+    <div class="" ng-repeat="question in questions">
+        <div question-summary="question"
+            questions="questions"
+            highlight-text="searchTerm"
+            ></div>
+    </div>
+    <!--<div pagination="questions"></div>-->
+</div>
+
+<hr>
+
+<!--<h2> {{user.username}}'s stream </h2>-->
+<h2>Community Stream </h2>
+<!--TODO: make directive???-->
+<div ng-repeat="record in stream" class="well well-sm">
+    <span class="glyphicon" ng-class="{
+        'glyphicon-user': isActor(record),
+        'glyphicon-star': !isActor(record)
+        }"></span>
+    <span class="badge" ng-class="{
+        'badge-danger': getReward(record) < 0,
+        'badge-success': getReward(record) > 0,
+        }">{{ getReward(record) }}</span>
+    <!--<span ng-bind-html="record.actionType"></span>-->
+    <span ng-bind-html="record.humanReadable"></span>
+    (<span am-time-ago="record.createdAt" style="color: gray"></span>)
+</div>
+
+
+
+<hr>
+

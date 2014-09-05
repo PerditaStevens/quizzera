@@ -1,0 +1,19 @@
+
+<h1>Tags</h1>
+
+
+    <div my-pagination="tags"></div>
+    <div search search-text="tagSearch.text" on-search="tagSearch.handle"></div>
+
+
+<div class="tag-list">
+    <div class="tag-tile" ng-repeat="tag in tags">
+        <div class="tag">
+            {{ tag.text }}
+        </div>
+        <div class="tag--times-used">
+            x {{ tag.timesUsed}}
+        </div>
+
+    </div>
+</div>

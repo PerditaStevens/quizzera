@@ -1,0 +1,42 @@
+
+<div class="quiz-session-results">
+    <h2>Results for Quiz: <span style="color: gray; font-style: italic">"{{ quiz.title }}"</span></h2>
+
+    <hr>
+
+    <h4>
+    Out of <strong>{{ counts.total }}</strong> questions,
+    you did answer <strong style="color: green">{{ counts.correct }}</strong> questions
+    correctly.
+    </h4>
+
+    <progress>
+        <bar ng-repeat="bar in percentages track by $index" value="bar.value" type="{{bar.type}}">
+        <span ng-hide="bar.value < 5">{{bar.value}}% </span>
+        <!--<span ng-hide="bar.value < 5">{{bar.value}}% {{bar.name}}</span>-->
+        </bar>
+    </progress>
+
+
+    <hr>
+    <h4>Results for individual questions:</h4>
+
+    <div class="question-tiles clearfix">
+        <div
+            ng-repeat="question in quiz.questions"
+            ng-class="{
+                correct: correctIndex[$index]
+            }"
+            >
+            <div question-tile
+                ui-sref="question({id: question.id})"
+                ng-class="{
+                    correct: correctIndex[$index]
+                }"
+            ></div>
+        </div>
+    </div>
+
+</div>
+
+

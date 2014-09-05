@@ -1,0 +1,17 @@
+<div class="answer answer--multiple-choice">
+    <div class="input-group option" ng-repeat="option in question.answer.options track by $index" >
+        <span class="input-group-addon option">
+            <input type="radio" tabindex="-1" ng-model="question.userAnswer.correctOption" ng-value="$index" >
+        </span>
+        <div class="form-control option--text"
+            ng-click="question.userAnswer.correctOption = $index"
+            ng-class="{
+                active: (question.sessionAnswer.answer.correctOption == $index || question.userAnswer.correctOption == $index),
+                correct: (result.correct && result.chosenOption == $index),
+                wrong: (!result.correct && result.chosenOption == $index)
+            }"
+            >
+            {{option}}
+        </div>
+    </div>
+</div>

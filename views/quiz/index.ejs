@@ -1,0 +1,18 @@
+
+<h1> Quiz Explorer </h1>
+
+<div ng-controller="quizCtrl">
+
+    <a href="/quiz/create" ng-show="<%= JSON.stringify(req.user) %>"  class="btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Create Quiz</a>
+
+    <div class="clearfix">
+
+
+    <div my-pagination="quizzes"></div>
+    <div search="Quiz" search-results="quizzes" search-term="searchTerm"></div>
+    <div ng-repeat="quiz in quizzes" quiz-summary="quiz" highlight-text="searchTerm"></div>
+    <div my-pagination="quizzes"></div>
+
+
+</div>
+

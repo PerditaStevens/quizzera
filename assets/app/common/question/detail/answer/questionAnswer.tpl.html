@@ -1,0 +1,28 @@
+
+<div class="question-answer">
+    <div ng-if="question.questionType === 'MULTIPLE_CHOICE'">
+        <multiple-choice-answer></multiple-choice-answer>
+    </div>
+    <div ng-if="question.questionType === 'TRUE_OR_FALSE'">
+        <true-or-false-answer></true-or-false-answer>
+    </div>
+
+    <br>
+
+    <div class="question-answer--submit">
+        <button
+            class="btn btn-default"
+            ng-if="currentUser"
+            ng-click="submit()"
+        >
+            <span ng-if="!sessionRunning"> check answer</span>
+            <span ng-if="sessionRunning"> submit & next</span>
+        </button>
+        <div class="login-notice" ng-if="!currentUser">
+            You must be logged in to answer questions.
+        </div>
+    </div>
+
+
+</div>
+

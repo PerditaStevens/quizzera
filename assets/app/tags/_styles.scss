@@ -1,0 +1,30 @@
+
+
+.tag-list{
+    $tile-padding: 5px;
+
+    & .tag-tile{
+        float: left;
+        width: 200px;
+        height: 40px;
+        padding: $tile-padding;
+        margin: 10px;
+        background: tint(whitesmoke, 10%);
+        border-radius: 3px;
+    }
+
+    & .tag-tile .tag{
+        @extend .tag-style;
+        float: left;
+        /*margin-left: -$tile-padding;*/
+        margin-right: 2*$tile-padding;
+    }
+
+    & .tag--times-used{
+        /*float: right;*/
+        float: left;
+        color: gray;
+        font-style: italic;
+    }
+
+}

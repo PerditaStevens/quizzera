@@ -1,0 +1,14 @@
+
+<div class="user-bar header__status--logged-in">
+        <div>
+            <div class="reputation-wrap" ng-click="gotoUserProfile(currentUser.id)">
+                <img class="reputation" src="/images/icons/star-whole-blue.png" alt="" >
+                {{ currentUser.stats.reputation }}
+            </div>
+            <img class="user-profile" ng-src="{{ currentUser.thumbnailUrl }}" ng-click="gotoUserProfile(currentUser.id)">
+            <div class="username-wrap">
+                <a href="#/user/{{currentUser.id}}" class="username">{{ currentUser.username }}</a>
+                (<a class="logout-button" href="/logout?ref={{ GLOBAL.currentUrl }}">logout</a>)
+            </div>
+        </div>
+</div>

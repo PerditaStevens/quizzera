@@ -1,0 +1,17 @@
+
+
+.action-record--to-string{
+    & .created-at{
+        color: gray;
+        font-style: italic;
+    }
+
+    & .actor--self {
+        color: gray;
+        font-style: italic;
+    }
+    & .target-owner--self {
+        color: gray;
+        font-style: italic;
+    }
+}

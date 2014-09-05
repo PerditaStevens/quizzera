@@ -1,0 +1,70 @@
+
+<h1>Hello <%= req.user? req.user.username: 'guest' %></h1>
+
+
+
+<div ng-controller="authCtrl">
+    <button ng-click="login()" class="btn btn-default">login</button>
+</div>
+
+<div ng-controller="LoginCtrl">
+    <form name="loginForm" ng-submit="login(credentials)"
+        novalidate>
+        <label for="identifier">Username or Email:</label>
+        <input type="text" id="identifier"
+        ng-model="credentials.identifier">
+        <label for="password">Password:</label>
+        <input type="password" id="password"
+        ng-model="credentials.password">
+        <button type="submit">Login</button>
+    </form>
+
+    <div ng-if="currentUser">Welcome, {{ currentUser.username }}</div>
+</div>
+
+
+<!--<div ng-view></div>-->
+<!--<div ui-view></div>-->
+
+
+<div ng-controller="createQuestionCtrl">
+    <button class="btn btn-success" ng-click="showQuestionCreationModal()">
+        <span class="glyphicon glyphicon-plus-sign" style="font-size: 1.2em"></span>
+        <span class="h3">contribute a question</span>
+    </button>
+</div>
+
+<hr>
+
+    <button class="btn btn-primary">
+        <!--<span class="glyphicon glyphicon-plus-sign"></span>-->
+        <span class="glyphicon glyphicon-plus-sign" style="font-size: 1.2em"></span>
+    <span class="h3">create a quiz</span>
+    </button>
+
+
+<hr>
+
+
+<div ng-controller="quizDetailCtrl" ng-init="quiz.id = 1">
+    <div quiz-modal="quiz.id" show="modalVisible"></div>
+
+    <!--<button ng-click="startQuiz()">startQuiz</button>-->
+<button class="btn btn-info" ng-click="startQuiz()">
+    <!--<span class="glyphicon glyphicon-flash"></span>-->
+    <!--<span class="glyphicon glyphicon-play-circle"></span>-->
+    <!--<span class="glyphicon glyphicon-chevron-right"></span>-->
+    <span class="glyphicon glyphicon-chevron-right" style="font-size: 1.2em"></span>
+    <span class="h3">Test your knowledge</span>
+    <!--with Questions or Quizzes...-->
+</button>
+
+
+<hr>
+<hr>
+<hr>
+
+
+
+
+<div home-view></div>
